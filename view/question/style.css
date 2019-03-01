@@ -1,0 +1,114 @@
+@font-face {
+    font-family: 'CafeDeco';
+    src: url('../fonts/CafeDeco.ttf');
+}
+
+.slide {
+	left: 170vw;
+}
+
+body {
+	display: block;
+	margin: 32px;
+	justify-content: center;
+	align-items: top;
+	height: 100%;
+	background: rgb(223,224,226);
+	overflow: hidden;
+}
+
+#question {
+	display: flex;
+	color: rgb(223,224,226);
+	font-family: "CafeDeco";
+	font-size: calc((1vw + 1vh) * 3);
+	width: 100%;
+	height: 40vh;
+	position: relative;
+	align-items: center;
+	margin-bottom: 32px;
+	text-align: center;
+}
+
+p {
+	margin: 32px;
+	width: 100%;
+	text-align: center;
+}
+
+.gradient-box {
+	background: linear-gradient(
+		60deg,
+		#f73333, 
+		#f35572, 
+		#ef4eaf, 
+		#ab66a9
+	);
+	animation: animatedgradient 3s ease alternate infinite;
+	background-size: 300% 300%;
+	border-radius: 8px;
+	box-shadow: 0px 5px 5px rgba(0,0,0,0.2);
+}
+
+.gradient-border {
+	--borderWidth: 10px;
+	background: rgb(223,224,226);
+	position: relative;
+	border-radius: 4px;
+	
+	width: calc(100% - var(--borderWidth) * 2);
+	height: calc(100% - var(--borderWidth) * 2);
+	left: 200vw;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 32px;
+	height: calc(30vh - 64px);
+	cursor: pointer;
+	color: #1d1f20;
+	font-family: "CafeDeco";
+	font-size: 13vh;
+	display: flex;
+}
+
+.gradient-border:hover {
+	background: rgba(223,224,226,0);
+	color: white;
+}
+
+.gradient-border:active {
+  background: rgba(223,224,226,0);
+  color: white;
+}
+
+.gradient-border:after {
+	content: "";
+	position: absolute;
+	top: calc(-1 * var(--borderWidth));
+	left: calc(-1 * var(--borderWidth));
+	height: calc(100% + var(--borderWidth) * 2);
+	width: calc(100% + var(--borderWidth) * 2);
+	background: linear-gradient(
+		60deg,
+		#f73333, 
+		#f35572, 
+		#ef4eaf, 
+		#ab66a9
+	);
+	border-radius: 8px;
+	z-index: -1;
+	animation: animatedgradient 3s ease alternate infinite;
+	background-size: 300% 300%;
+	box-shadow: 0px 5px 5px rgba(0,0,0,0.2);
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
