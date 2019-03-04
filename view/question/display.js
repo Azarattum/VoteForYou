@@ -45,7 +45,7 @@ function parseResponseOnAnswer(response)
 
 function niceAlert(text, callback)
 {
-	$("#question").css("height","calc(100vh - 32px)");
+	$("#question").css("height","calc(100vh - 80px)");
 	window.setTimeout(callback, 3600);
 
 	$(".gradient-border").animate({opacity: 0}, 600);

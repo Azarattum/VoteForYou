@@ -20,14 +20,16 @@
 	left: 200vw;
 }
 
+html, body {
+	overflow: hidden;
+}
+
 body {
+	position: relative;
 	display: block;
-	margin: 16px;
 	justify-content: center;
 	align-items: top;
-	height: 100%;
 	background: rgb(223,224,226);
-	overflow: hidden;
 }
 
 #question {
@@ -36,12 +38,12 @@ body {
 	font-family: "CafeDeco";
 	font-size: calc((1vw + 1vh) * 3);
 	width: 100%;
-	height: calc(40vh + 48px);
+	height: 40vh;
 	position: relative;
 	align-items: center;
 	margin-bottom: 16px;
 	text-align: center;
-	
+
 	transition: 0.6s;
 	transition-property: height;
 }
