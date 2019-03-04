@@ -1,15 +1,28 @@
 @font-face {
-    font-family: 'CafeDeco';
-    src: url('../fonts/CafeDeco.ttf');
+	font-family: 'CafeDeco';
+	src: url('../fonts/CafeDeco.ttf');
 }
 
 .slide {
-	left: 170vw;
+	position: relative;
+	left: 0 !important;
+	animation: income 0.6s;
+}
+
+.hide {
+	position: relative;
+	left: -200vw !important;
+	animation: outcome 0.6s;
+}
+
+#holder {
+	position: relative;
+	left: 200vw;
 }
 
 body {
 	display: block;
-	margin: 32px;
+	margin: 16px;
 	justify-content: center;
 	align-items: top;
 	height: 100%;
@@ -23,11 +36,14 @@ body {
 	font-family: "CafeDeco";
 	font-size: calc((1vw + 1vh) * 3);
 	width: 100%;
-	height: 40vh;
+	height: calc(40vh + 48px);
 	position: relative;
 	align-items: center;
-	margin-bottom: 32px;
+	margin-bottom: 16px;
 	text-align: center;
+	
+	transition: 0.6s;
+	transition-property: height;
 }
 
 p {
@@ -51,17 +67,17 @@ p {
 }
 
 .gradient-border {
-	--borderWidth: 10px;
+	--borderWidth: 5px;
 	background: rgb(223,224,226);
 	position: relative;
 	border-radius: 4px;
 	
 	width: calc(100% - var(--borderWidth) * 2);
 	height: calc(100% - var(--borderWidth) * 2);
-	left: 200vw;
+	left: var(--borderWidth);
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 32px;
+	margin-bottom: 16px;
 	height: calc(30vh - 64px);
 	cursor: pointer;
 	color: #1d1f20;
@@ -111,4 +127,22 @@ p {
   100% {
     background-position: 0% 50%;
   }
+}
+
+@keyframes income {
+	0% {
+		left: 200vw;
+	}
+	100% {
+		left: 5px;
+	}
+}
+
+@keyframes outcome {
+	0% {
+		left: 0;
+	}
+	100% {
+		left: -200vw;
+	}
 }

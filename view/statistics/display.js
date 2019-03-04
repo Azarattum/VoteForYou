@@ -125,20 +125,9 @@ function Stage_0() {
 function StartStage_1() {
 	$("#handler").html(`
 	<div id = "ColumnChart">
-		<div id = "numbers_y">
-			<div class = "value">0</div>
-			<div class = "value">5</div>
-			<div class = "value">10</div>
-			<div class = "value">15</div>
-			<div class = "value">20</div>
-			<div class = "value">25</div>
-		</div>
+		<div id = "results"></div>
 
-		<div id = "chart">
-			<div id = "results"></div>
-
-			<div id = "numbers_x"></div>
-		</div>
+		<div id = "numbers_x"></div>
 	</div>`);
 
 	Stage_1();
@@ -157,20 +146,9 @@ function Stage_1() {
 
 	$("#handler").html(`
 		<div id = "ColumnChart">
-			<div id = "numbers_y">
-				<div class = "value">0</div>
-				<div class = "value">5</div>
-				<div class = "value">10</div>
-				<div class = "value">15</div>
-				<div class = "value">20</div>
-				<div class = "value">25</div>
-			</div>
+			<div id = "results"></div>
 
-			<div id = "chart">
-				<div id = "results"></div>
-
-				<div id = "numbers_x"></div>
-			</div>
+			<div id = "numbers_x"></div>
 		</div>`);
 
 	//только после окончания анимации
@@ -253,16 +231,24 @@ function Stage_1() {
 
 	function CheckScores() {
 		CallFuncA("getScores" , function(Scores) {
-			scores = JSON.parse(Scores);
+			scores_new = JSON.parse(Scores);
+
+			var score_max = 0;
 
 			for (var i = 0; i < players.length; i++) {
+				var current_new_score = scores_new[ players[i] ];
 				var current_score = scores[ players[i] ];
 
-				$("#number"+players[i]).text(current_score);
+				if (current_new_score != current_score) {
+					$("#number"+players[i]).text(current_new_score);
 
-				$("#column"+players[i]).animate({height: current_score * 3 + 2 + "%"}, 600);
-				//$("#column"+players[i]).css("height", current_score * 3 + 2 + "%");
+					$("#column"+players[i]).animate({height: Math.floor( (current_new_score * 3 + 2) * 0.01 * +$("#result"+players[i]).css("height").replace("px", "") ) }, 600);
+				}
+
+				//определить игрока с максимальными очками и присвоить его аватару класс winner
 			}
+
+			scores = scores_new;
 
 			ColumnStyle();
 
@@ -284,6 +270,15 @@ function Stage_1() {
 				$("#column"+current_player).addClass("gold_column");
 			}
 
+			if (ready_players.length == players.length) {
+				CallFuncA("stop", function(response) {
+					if (response == "1") {
+						status = 2;
+						TransitionToStage_2();
+					}
+				});
+			}
+
 			if (status == 1) {
 				setTimeout(function() {
 					CheckReadyUsers();
@@ -293,26 +288,49 @@ function Stage_1() {
 	}
 
 	function ColumnStyle() {
-		$("#numbers_y").css("height", $("#results").css("height"));
-		$(".value").css("margin-top", $("#results").css("height").replace("px", "") * 0.09 + 3);
-
 		$(".result").css("width", $("#results").css("width").replace("px", "") / (players.length + 1) + "px");
 
-		if ( +$(".result").css("height").replace("px", "") - +$(".column").css("height").replace("px", "") - 64 >
-			$(".result").css("height").replace("px", "") / 2 ) {
-			$(".avatar").css("height", $(".result").css("height").replace("px", "") / 2);
-		} else {
-			$(".avatar").css("height", +$(".result").css("height").replace("px", "") - +$(".column").css("height").replace("px", "") - 64 + "px");
-		}
-		
+		for (var i = 0; i < players.length; i++) {
+			var current_score = scores[ players[i] ];
 
-		if ( +$(".result").css("width").replace("px", "") / 2 > +$(".avatar").css("height").replace("px", "") ) {
-			$(".avatar").css("width", $(".avatar").css("height").replace("px", ""));
-		} else {
-			$(".avatar").css("width", $(".result").css("width").replace("px", "") / 2);
-			$(".avatar").css("height", $(".result").css("width").replace("px", "") / 2);
+			$("#column"+players[i]).css("height", Math.floor( (current_score * 3 + 2) * 0.01 * +$("#result"+players[i]).css("height").replace("px", "") ));
 		}
+
+		var highest_column = 0;
+
+		for (var i = 0; i < players.length; i++) {
+			var column_height = Math.floor( +$("#column"+players[i]).css("height").replace("px", "") );
+
+			if (column_height > highest_column) {
+				highest_column = column_height;
+			}
+		}
+
+		if ( +$(".result").css("height").replace("px", "") - highest_column - 64 >
+			$(".result").css("width").replace("px", "") / 2 ) {
+			$(".avatar").css("height", Math.floor( $(".result").css("width").replace("px", "") / 2) );
+			$(".avatar").css("width", Math.floor( $(".result").css("width").replace("px", "") / 2) );
+		} else {
+			$(".avatar").css("height", Math.floor( +$(".result").css("height").replace("px", "") ) - highest_column - 64 + "px");
+			$(".avatar").css("width", Math.floor( +$(".result").css("height").replace("px", "") ) - highest_column - 64 + "px");
+		}
+
+		/*if ( +$(".avatar").css("width").replace("px", "") > +$(".avatar").css("height").replace("px", "") ) {
+				$(".avatar").css("width", $(".avatar").css("height"));
+		}*/
 	}
+
+	function TransitionToStage_2() {
+		window.onresize = null;
+		
+		StartStage_2();
+	}
+}
+
+function StartStage_2() {
+	$("#handler").html();
+
+	Stage_2();
 }
 
 function Stage_2() {
@@ -320,6 +338,9 @@ function Stage_2() {
 }
 
 var status = 0;
+
+var count_winners = 1;
+
 var players = [];
 var ready_players = [];
 var scores = [];

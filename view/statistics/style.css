@@ -182,18 +182,8 @@ body {
 
 	display: flex;
 	justify-content: space-between;
+	flex-direction: column;
 	align-items: left;
-	flex-wrap: nowrap;
-}
-
-#numbers_y {
-	width: 64px;
-	height: calc(100% - 64px);
-
-	display: flex;
-	/*justify-content: space-between;*/
-	flex-direction: column-reverse;
-	align-items: center;
 	flex-wrap: nowrap;
 }
 
@@ -262,6 +252,7 @@ body {
 	height: 100%;
 	font-family: "CafeDeco";
 	font-size: 30px;
+	line-height: 64px;
 }
 
 .avatar {
@@ -272,6 +263,10 @@ body {
 	background-size: cover;
 	filter: saturate(1.2);
 	box-shadow: 0px 0px 20px #1d1f20;
+}
+
+.winner {
+	box-shadow: 0px 0px 20px #cccc33;
 }
 
 .column {
@@ -296,10 +291,10 @@ body {
 .gold_column {
 	background: linear-gradient(
 		60deg,
-		#f7cb33, 
-		#f3f155, 
-		#efc04e, 
-		#aba966
+		hsl(40, 92%, 50%), 
+		hsl(45, 92%, 60%),
+		hsl(50, 92%, 65%),
+		hsl(45, 92%, 60%)
 	);
 
 	animation: animatedgradient 3s ease alternate infinite;

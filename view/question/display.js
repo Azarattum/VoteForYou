@@ -3,16 +3,9 @@ function loadDisplayPage()
 	$("#question p").html(questionText);
 	if (questionText == "" || questionText == undefined)
 		$("#question p").html(CallFunc("getQuestion("+user+")", "server.php"));
-	animateIncome();
+	$("#holder").addClass("slide");
 	registerEvents();
 	registerMobileEvents();
-}
-
-function animateIncome()
-{
-	$(".slide").animate({left: "0%"}, 600, function(){
-		$(".gradient-border").animate({left: "10px"},100);
-	});
 }
 
 function registerEvents()
@@ -52,11 +45,11 @@ function parseResponseOnAnswer(response)
 
 function niceAlert(text, callback)
 {
-	$("#question").animate({height: ($(window).height() - 128) + "px"}, 600, function(){
-		$("#question").css("height","calc(100vh - 64px)");
-		window.setTimeout(callback, 3000);
-	});
+	$("#question").css("height","calc(100vh - 32px)");
+	window.setTimeout(callback, 3600);
+
 	$(".gradient-border").animate({opacity: 0}, 600);
+
 	$("p").animate({opacity: 0}, 300, function(){
 		$("p").html(text);
 		$("p").animate({opacity: 1}, 300);
@@ -82,7 +75,9 @@ function registerMobileEvents()
 function goToPage(page)
 {
 	//Outcome animation
-	$(".slide").animate({left: "-200vw"}, 600,function() {
+	$("#holder").addClass("hide");
+	$("#holder").removeClass("slide");
+	setTimeout(() => {
 		location.replace(page);
-	});
+	}, 650);
 }
