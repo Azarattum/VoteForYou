@@ -23,7 +23,9 @@ body {
 
 .avatar {
 	width: 168px;
+	min-width: 168px;
 	height: 168px;
+	min-height: 168px;
 	border-radius: 100%;
 	float: left;
 	background-color: #1d1f20;;
