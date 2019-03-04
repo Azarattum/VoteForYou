@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf8">
+		<link rel="stylesheet" href="view/statistics/style.css" type="text/css">
+		<script src="view/statistics/display.js" type="text/javascript"></script>
+	</head>
+
+	<body onload="loadPage()">
+		<div id = "Statistics">
+			<div id = "ColumnChart">
+				<div id = "numbers_y">
+					<div class = "value">0</div>
+					<div class = "value">5</div>
+					<div class = "value">10</div>
+					<div class = "value">15</div>
+					<div class = "value">20</div>
+					<div class = "value">25</div>
+				</div>
+
+				<div id = "chart">
+					<div id = "results">
+						<div class = "result" id = result1>
+							<div class = "avatar" style = "background-image:url(\"\");"></div>
+							<div class = "column" id = "column1"></div>
+						</div>
+
+						<div class = "result" id = result2>
+							<div class = "avatar" style = "background-image:url(\"\");"></div>
+							<div class = "column" id = "column2"></div>
+						</div>
+					</div>
+
+					<div id = "numbers_x">
+						<div class = "number">1</div>
+						<div class = "number">2</div>
+					</div>
+				</div>
+			</div>
+
+			<div id = "info">
+				<div id = "Profiles">
+					<div class = "player">
+						<div class = "gradient-border box" id = "box1">
+							<p class = "name">Елизавета Кожекина</p>	
+						</div>
+
+						<div class = "gradient-border score-box" id = "score1">
+							<div class = "score">0</div>	
+						</div>
+					</div>
+					
+
+					<div class = "player">
+						<div class = "gradient-border box" id = "box2">
+							<p class = "name">Анастасия Покладова</p>	
+						</div>
+
+						<div class = "gradient-border score-box" id = "score2">
+							<div class = "score">0</div>	
+						</div>
+					</div>
+				</div>
+
+				<div class = "gradient-border box" id = "box2">
+					<div id = "status">Начать игру</div>	
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
