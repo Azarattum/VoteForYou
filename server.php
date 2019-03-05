@@ -6,13 +6,27 @@
 		$data["stage"] = 1;
 		
 		//Define empty data
+		$questionsData = getQuestions();
 		$maxQuestionId = count(getQuestions()) - 1;
 		$usersCount = count($data["users"]);
 		//Reset all user's data
 		for ($i = 0; $i < $usersCount; $i++)
 		{
 			$questions = range(0, $maxQuestionId);
-			shuffle($questions);
+			$shuffledQuestions = array();
+			$orderedQuestions = array();
+			foreach ($questions as $question) 
+			{
+				if ($questionsData[$question]["ordered"] == true)
+					array_push($orderedQuestions, $question);
+				else
+					array_push($shuffledQuestions, $question);
+			}
+
+			shuffle($shuffledQuestions);
+
+			$questions = array_merge($shuffledQuestions, $orderedQuestions);
+
 			$data["users"][$i]["questions"] = $questions;
 			$data["users"][$i]["currentQuestion"] = 0;
 			$data["users"][$i]["score"] = 0;
