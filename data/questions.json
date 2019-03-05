@@ -157,28 +157,42 @@
 		"text": "Главный цветочный символ 8 марта в СССР – мимоза?",
 		"rightAnswer": true,
 		"correctionText": "Ну, конечно же, верно!!!",
-		"score": 0,
-		"ordered": true
+		"score": 2,
+		"ordered": false
 	},
 	{
 		"text": "Женский праздник отмечали еще в <b>Древнем Риме</b>?",
 		"rightAnswer": true,
 		"correctionText": "Ну ващщееет праздновали.Причем, как и полагается – с подарками и поздравлениями.",
-		"score": 0,
+		"score": 3,
 		"ordered": false
 	},
 	{
 		"text": "8 марта 1914 года вышел второй номер журнала <b>«Работница»</b>?",
 		"rightAnswer": true,
 		"correctionText": "Номер журнала был первым:P",
-		"score": 0,
+		"score": 1,
 		"ordered": false
 	},
 	{
 		"text": "Верно ли, что в 1950 году в Женский день СССР заявил о наличии атомной бомбы?",
 		"rightAnswer": true,
 		"correctionText": "Удивительно, но это действительно верно.",
-		"score": 0,
+		"score": 1,
+		"ordered": false
+	},
+	{
+		"text": "Правда ли, что 8 марта французская летчица <b>Элиз де Ларош</b> стала обладательницей звания первой в мире женщины-пилота",
+		"rightAnswer": true,
+		"correctionText": "Да ,но это лишь сопадение.",
+		"score": 3,
+		"ordered": false
+	},
+	{
+		"text": "Правда ли, что 8 марта празднуется в 42 странах?",
+		"rightAnswer": true,
+		"correctionText": "Эх,но лишь в 32 странах есть этот праздник",
+		"score": 1,
 		"ordered": false
 	}
 ]
