@@ -256,6 +256,9 @@ body {
 }
 
 .avatar {
+	min-width: 32px;
+	min-height: 32px;
+
 	border-radius: 100%;
 	float: center;
 	background-color: #1d1f20;;

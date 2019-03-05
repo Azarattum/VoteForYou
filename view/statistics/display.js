@@ -242,7 +242,7 @@ function Stage_1() {
 				if (current_new_score != current_score) {
 					$("#number"+players[i]).text(current_new_score);
 
-					$("#column"+players[i]).animate({height: Math.floor( (current_new_score * 3 + 2) * 0.01 * +$("#result"+players[i]).css("height").replace("px", "") ) }, 600);
+					$("#column"+players[i]).animate({height: Math.floor( (current_new_score * 2.3 + 2) * 0.01 * (+$("#result"+players[i]).css("height").replace("px", "") - 96) ) }, 600);
 				}
 
 				//определить игрока с максимальными очками и присвоить его аватару класс winner
@@ -293,7 +293,7 @@ function Stage_1() {
 		for (var i = 0; i < players.length; i++) {
 			var current_score = scores[ players[i] ];
 
-			$("#column"+players[i]).css("height", Math.floor( (current_score * 3 + 2) * 0.01 * +$("#result"+players[i]).css("height").replace("px", "") ));
+			$("#column"+players[i]).css("height", Math.floor( (current_score * 2.3 + 2) * 0.01 * (+$("#result"+players[i]).css("height").replace("px", "") - 96) ));
 		}
 
 		var highest_column = 0;
