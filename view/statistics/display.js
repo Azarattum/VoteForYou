@@ -195,6 +195,11 @@ function Stage_1() {
 		CallFuncA("getOnlineUsers", function(OnlineUsers) {
 			var players_new = JSON.parse(OnlineUsers);
 
+			//players_new + ready_players + distinct + sort(ask)
+			players_new = players_new.concat(ready_players).unique().sort(function(a, b) {
+				return a - b;
+			});
+
 			var flag = CompareArrays(players, players_new);
 			if (!flag) {
 				players = players_new;
@@ -360,3 +365,15 @@ function CompareArrays(arr1, arr2) {
 
 	return true;
 }
+
+Array.prototype.unique = function() {
+	var a = this.concat();
+	for(var i=0; i<a.length; ++i) {
+		for(var j=i+1; j<a.length; ++j) {
+			if(a[i] === a[j])
+				a.splice(j--, 1);
+		}
+	}
+
+	return a;
+};

@@ -134,7 +134,7 @@
 	},
 	{
 		"text": "Правда ли, что 8 марта празднуется в 42 странах?",
-		"rightAnswer": true,
+		"rightAnswer": false,
 		"correctionText": "Жаль, но лишь в 32 странах есть этот праздник.",
 		"score": 1,
 		"ordered": false
